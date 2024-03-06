@@ -104,7 +104,7 @@ class PostController extends Controller
         if($post->user_id == Auth::user()->id){
             $post->delete();
         }else{
-            return Response()->json(['error' => '']);
+            return Response()->json(['error' => 'Você não tempermissão para deletar']);
         }
 
         return redirect()->route('posts.index');
