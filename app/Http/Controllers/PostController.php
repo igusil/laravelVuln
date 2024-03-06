@@ -15,8 +15,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $posts->load('user');
 
-        echo json_encode($posts);
+        return view('posts.index', ['posts' => $posts]);
+
         //
     }
 
@@ -38,6 +40,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id = $request->user_id;
+
+        $result = $post->save();
+
+        return redirect()->route('posts.index');
         //
     }
 
@@ -49,6 +59,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $post = Post::findorfail($id);
+        $post->load('user');
+        return Response()->json($post);
+
         echo "Exibindo o post" . $id;
         //
     }
@@ -84,6 +98,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+
+        $post = Post::find($id);
+
+        if($post->user_id == Auth::user()->id){
+            $post->delete();
+        }else{
+            return Response()->json(['error' => 'Você não tem permissão para deletar esse post']);
+        }
+
+        return redirect()->route('posts.index');
         //
     }
 }
