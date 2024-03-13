@@ -98,15 +98,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-
         $post = Post::find($id);
 
         if($post->user_id == Auth::user()->id){
             $post->delete();
         }else{
-            return Response()->json(['error' => 'Você não tempermissão para deletar']);
+            return Response()->json(['error' => '']);
         }
-
         return redirect()->route('posts.index');
         //
     }

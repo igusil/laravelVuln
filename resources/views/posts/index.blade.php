@@ -9,7 +9,6 @@
   
   <center>
     <div>
-
       @foreach($posts as $post)
 
         <div style="display:flex; flex:row; justify-content:center; align-items:center;">

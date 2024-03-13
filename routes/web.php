@@ -30,3 +30,10 @@ Route::get('/admin/rota-protegida', function () {
 });
 Route::resource('posts', PostController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile/edit', [App\Http\Controllers\UserController::class, 'show_edit']);
+Route::get('/profile/update', [App\Http\Controllers\UserController::class, 'update'])->name('profile.update');
