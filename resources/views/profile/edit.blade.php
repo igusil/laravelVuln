@@ -14,10 +14,13 @@
     
     <form action=""/profile/update" method="post">
       @csrf
-      <input type="hidden" name="id" value="{{Auth::user->id}}">
-      <input type="text" name="name" value="{{Auth::user->name}}">
-      <input type="email" name="email" value="{{Auth::user->email}}">
+      <input type="hidden" name="id" value="{{Auth::user()->id}}">
+      <input type="text" name="name" value="{{Auth::user()->name}}">
+      <br/>
+      <input type="email" name="email" value="{{Auth::user()->email}}">
+      <br/>
       <!--<input type="password" name="password" value="{{Auth::user->password}}">-->
+      <input type="submit" value="Atualizar perfil">
 
     </form>
 
