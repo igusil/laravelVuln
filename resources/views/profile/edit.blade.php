@@ -21,9 +21,7 @@
       <br/>
       <!--<input type="password" name="password" value="{{Auth::user->password}}">-->
       <input type="submit" value="Atualizar perfil">
-
     </form>
-
   </center>
 
 </body>
