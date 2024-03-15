@@ -17,8 +17,12 @@ class UserController extends Controller
         $foto_do_perfil = $request->file('photo_path');
         $nome_da_foto = $foto_do_perfil->getClientOriginalName(); //pega nome original da foto
 
-        $Storage::disk('local')->put($nome_da_foto, file_get_contents($foto_do_perfil));//salva a imagem no disco local com
+        $Storage::disk('local')->put($nome_da_foto, $foto_do_perfil->getContent()) ;//salva a imagem no disco local
         
+        $request->merge([
+            'photo_path' => $nome_da_foto
+        ]);
+
         $user = User::find($request->id);
         if ($user){
 
