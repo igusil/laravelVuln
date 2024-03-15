@@ -11,7 +11,7 @@ class UserController extends Controller
         return view('profile.edit');
     }
     
-    public function  update(Request $request) {
+    public function update(Request $request){
         
         $user = User::find($request->id);
         if ($user){
