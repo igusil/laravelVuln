@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        schema::table('users', function(Blueprint $blueprint){
+            $blueprint->boolean('is_admin')->default(false);
+            $blueprint->string('photo_path')->nullable();
+        });
     }
 
     /**
