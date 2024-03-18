@@ -12,7 +12,7 @@
     <h2>Editando seu perfil</h2>
     <small>{{Auth::user()->name}}, Você está editando o seu perfil</small>
     
-    <form action="/profile/update" method="POST" enctype="multipart/form-data">
+    <form action="/profile/update" method="post" enctype="multipart/form-data">
       @csrf
       <input type="hidden" name="id" value="{{Auth::user()->id}}">
 
