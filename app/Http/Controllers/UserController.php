@@ -14,19 +14,19 @@ class UserController extends Controller
 
     public function update(Request $request){
 
+        $data = $request->all();
+
         $foto_do_perfil = $request->file('photo_path');
         $nome_da_foto = $foto_do_perfil->getClientOriginalName(); //pega nome original da foto
 
         Storage::disk('local')->put('public/'. $nome_da_foto, $foto_do_perfil->getContent()) ;//salva a imagem no disco local
         
-        $request->merge([
-            'photo_path' => $nome_da_foto
-        ]);
+        $data['photo_path'] = $nome_da_foto;
 
-        $user = User::find($request->id);
+        $user = User::find($data['id']);
         if($user){
 
-            $result = $user->update($request->all());
+            $result = $user->update($data);
 
             if($result){
                 return redirect()->route('home');
