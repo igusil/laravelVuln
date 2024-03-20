@@ -57,7 +57,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/profile/edit">
-                                        {{ __('Editar Perfil') }}
+                                        Editar Perfil
                                     </a>    
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
