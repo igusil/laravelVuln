@@ -14,6 +14,7 @@ class UserController extends Controller
 
     public function update(Request $request){
 
+        
         $data = $request->all();
 
         $foto_do_perfil = $request->file('photo_path');
