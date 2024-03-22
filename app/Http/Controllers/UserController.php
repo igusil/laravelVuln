@@ -14,6 +14,7 @@ class UserController extends Controller
 
     public function update(Request $request){
 
+        //verificar se a extemsão do arquivo é .png/.jpg/.jpeg
         
         $data = $request->all();
 
